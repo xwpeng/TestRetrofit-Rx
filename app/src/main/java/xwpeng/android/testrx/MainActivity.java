@@ -5,7 +5,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.ImageView;
 
+import xwpeng.android.testrx.present.TestRetrofit;
 import xwpeng.android.testrx.present.TestRetrofitRx;
+import xwpeng.android.testrx.present.TestRx;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
     private ImageView mImageView;
@@ -16,7 +18,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         initView();
-        findViewById(R.id.button1).setOnClickListener(this);
+        findViewById(R.id.testRx_button).setOnClickListener(this);
+        findViewById(R.id.testRetrofit_button).setOnClickListener(this);
+        findViewById(R.id.testRetrofitRx_button).setOnClickListener(this);
     }
 
     private void initView() {
@@ -28,10 +32,18 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
-            case R.id.button1:
-//                TestRx.initRx(getApplicationContext(), mImageView);
-//                TestRetrofit.initRetrofit();
-                TestRetrofitRx.initRetrofitRx();
+            case R.id.testRx_button:
+                TestRx.base(getApplicationContext(), mImageView);
+                break;
+            case R.id.testRetrofit_button:
+//                TestRetrofit.base();
+                  TestRetrofit.query();
+//                TestRetrofit.queryMap();
+//                TestRetrofit.responseConverter();
+
+                break;
+            case R.id.testRetrofitRx_button:
+                TestRetrofitRx.base();
                 break;
         }
     }

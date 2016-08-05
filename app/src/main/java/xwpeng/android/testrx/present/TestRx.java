@@ -41,7 +41,7 @@ public class TestRx {
         return Observable.from(a);
     }
 
-    public static void initRx(final Context context, final ImageView imageView) {
+    public static void base(final Context context, final ImageView imageView) {
         if (imageView == null) return;
 //        create()
 //        justCreate()

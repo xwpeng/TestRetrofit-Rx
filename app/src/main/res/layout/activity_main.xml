@@ -2,6 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
 >
 
     <ImageView
@@ -16,9 +17,23 @@
         />
 
     <Button
-        android:id="@+id/button1"
+        android:id="@+id/testRx_button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="dsd"
+        android:text="TestRx"
+        />
+
+    <Button
+        android:id="@+id/testRetrofit_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="TestRetrofit"
+        />
+
+    <Button
+        android:id="@+id/testRetrofitRx_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="TestRetrofitRx"
         />
 </LinearLayout>

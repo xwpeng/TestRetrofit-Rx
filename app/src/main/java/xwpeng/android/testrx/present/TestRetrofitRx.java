@@ -18,7 +18,7 @@ import xwpeng.android.testrx.entity.Repo2;
  */
 public class TestRetrofitRx {
     private final static String TAG = TestRetrofitRx.class.getSimpleName();
-    public static void initRetrofitRx() {
+    public static void base() {
         Retrofit retrofit = new Retrofit.Builder().baseUrl("https://api.github.com/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
