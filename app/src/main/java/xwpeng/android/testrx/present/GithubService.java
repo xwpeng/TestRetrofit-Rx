@@ -29,29 +29,29 @@ import xwpeng.android.testrx.entity.Result;
 public interface GithubService {
     // https://api.github.com/users/xwpeng/repos
     @GET("users/{user}/repos")
-    Call<List<Repo2>> listRepos(@Path("user") String user);
+    Call<List<Repo2>> testBase(@Path("user") String user);
 
     // https://github.com/xwpeng?tab=repositories
     @GET("{user}")
-    Call<ResponseBody> testQuery(@Path("user") String user, @Query("tab") String tab);
+    Call<ResponseBody> testAnnotationQuery(@Path("user") String user, @Query("tab") String tab);
 
     //https://www.google.com.hk/search?q=Retrofit&oq=Retrofit
     @GET("/")
-    Call<ResponseBody> tsetQueryMap(@QueryMap Map<String, String> queryMaps);
+    Call<ResponseBody> tsetAnnotationQueryMap(@QueryMap Map<String, String> queryMaps);
 
     @GET
-    Call<Result> testResposeConverter(@Url String url);
+    Call<Result> testAnnotationURl(@Url String url);
 
     @GET("list.from")
-    Call<Result> testResposeConverter2();
+    Call<Result> testResposeConverter();
 
     @FormUrlEncoded
     @POST("/")
-    Call<ResponseBody> testPost(@Field("name") String uid, @Field("occupation") String sid);
+    Call<ResponseBody> testAnnotationPost(@Field("name") String uid, @Field("occupation") String sid);
 
     @FormUrlEncoded
     @POST("/")
-    Call<ResponseBody> testPostMap(@FieldMap Map<String, String> fields);
+    Call<ResponseBody> testAnnotationPostMap(@FieldMap Map<String, String> fields);
 
     @Multipart
     @POST("/upload")
@@ -67,6 +67,6 @@ public interface GithubService {
 
 
     @GET("users/{user}/repos")
-    Observable<List<Repo2>> listReposRx(@Path("user") String user);
+    Observable<List<Repo2>> testBaseReposRx(@Path("user") String user);
 
 }

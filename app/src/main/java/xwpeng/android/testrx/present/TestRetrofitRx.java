@@ -24,7 +24,7 @@ public class TestRetrofitRx {
                 .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
                 .build();
         GithubService service = retrofit.create(GithubService.class);
-        Observable<List<Repo2>> repoCall = service.listReposRx("xwpeng");
+        Observable<List<Repo2>> repoCall = service.testBaseReposRx("xwpeng");
         repoCall.subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Observer<List<Repo2>>() {
                     @Override
