@@ -7,7 +7,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import okhttp3.OkHttpClient;
 import okhttp3.ResponseBody;
+import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Converter;
@@ -102,7 +104,7 @@ public class TestRetrofit {
     }
 
     public static void annotationURl() {
-        getService("http://japi.juhe.cn/joke/content/", new ResultConverterFactory()).testAnnotationURl("list.from")
+        getService("http://dd/", new ResultConverterFactory()).testAnnotationURl("http://japi.juhe.cn/joke/content/list.from")
                 .enqueue(new Callback<Result>() {
                     @Override
                     public void onResponse(Call<Result> call, Response<Result> response) {
@@ -131,13 +133,17 @@ public class TestRetrofit {
                 });
     }
 
-
     private static GithubService getService(String baseUrl, Converter.Factory factory) {
-        Retrofit.Builder builder = new Retrofit.Builder().baseUrl(baseUrl);
+        HttpLoggingInterceptor logging = new HttpLoggingInterceptor();
+        logging.setLevel(HttpLoggingInterceptor.Level.BODY);
+        OkHttpClient.Builder httpClient = new OkHttpClient.Builder();
+        httpClient.addInterceptor(logging);
+        Retrofit.Builder builder = new Retrofit.Builder().baseUrl(baseUrl).client(httpClient.build());
         if (factory != null) {
             builder.addConverterFactory(factory);
         }
         Retrofit retrofit = builder.build();
         return retrofit.create(GithubService.class);
     }
+
 }

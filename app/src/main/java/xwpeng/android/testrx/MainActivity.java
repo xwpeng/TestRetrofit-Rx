@@ -39,7 +39,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 //                TestRetrofit.base();
 //                  TestRetrofit.query();
 //                TestRetrofit.queryMap();
-                TestRetrofit.responseConverter();
+//                TestRetrofit.responseConverter();
+                TestRetrofit.annotationURl();
                 break;
             case R.id.testRetrofitRx_button:
                 TestRetrofitRx.base();

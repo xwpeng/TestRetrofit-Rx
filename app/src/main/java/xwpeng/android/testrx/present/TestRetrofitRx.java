@@ -4,6 +4,8 @@ import android.util.Log;
 
 import java.util.List;
 
+import okhttp3.OkHttpClient;
+import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
@@ -19,9 +21,14 @@ import xwpeng.android.testrx.entity.Repo2;
 public class TestRetrofitRx {
     private final static String TAG = TestRetrofitRx.class.getSimpleName();
     public static void base() {
+        HttpLoggingInterceptor logging = new HttpLoggingInterceptor();
+        logging.setLevel(HttpLoggingInterceptor.Level.BODY);
+        OkHttpClient.Builder httpClient = new OkHttpClient.Builder();
+        httpClient.addInterceptor(logging);
         Retrofit retrofit = new Retrofit.Builder().baseUrl("https://api.github.com/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
+                .client(httpClient.build())
                 .build();
         GithubService service = retrofit.create(GithubService.class);
         Observable<List<Repo2>> repoCall = service.testBaseReposRx("xwpeng");

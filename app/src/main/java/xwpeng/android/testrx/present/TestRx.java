@@ -133,6 +133,5 @@ public class TestRx {
                 .doOnError(new ErrorLoggingAction(request))
                 .doOnError(NetworkUtil::checkForExpiredToken)
                 .subscribe(request.observer());*/
-
     }
 }

@@ -65,8 +65,9 @@ public interface GithubService {
     @POST("/upload")
     Call<ResponseBody> testUploadPartMap(@Part("description") ResponseBody description, @PartMap Map<String, RequestBody> files);
 
-
     @GET("users/{user}/repos")
     Observable<List<Repo2>> testBaseReposRx(@Path("user") String user);
+
+
 
 }
